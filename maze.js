@@ -1,37 +1,25 @@
-var loser = null;  
+// JavaScript File
+var loser = false;  // whether the user has hit a wall
 
 window.onload = function() {
-    $("start").onclick = Click;
-    $("end").onmouseover = End;
+    $("start").onclick = startClick;
+    $("end").onmouseover = overEnd;
     var boundaries = $$("div#maze div.boundary");
     for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].onmouseover = overBoundary;
     }
-    document.body.observe("mousemove", onBody);   
 };
 
-
-function onBody(event) {
-    if (loser === false && event.element() == document.body) {
-        overBoundary(event);
+function overBoundary() {
+    loser = true;
+    $("status").textContent = "You Lose!";
+    var boundaries = $$("div#maze div.boundary");
+    for (var i = 0; i < boundaries.length; i++) {
+        boundaries[i].addClassName("youlose");
     }
 }
 
-
-function overBoundary(event) {
-    if (loser === false) {
-        loser = true;
-        $("status").textContent = "You Lose!";
-        var boundaries = $$("div#maze div.boundary");
-        for (var i = 0; i < boundaries.length; i++) {
-            boundaries[i].addClassName("youlose");
-        }
-        event.stop();  
-    }
-}
-
-
-function Click() {
+function startClick() {
     loser = false;
     $("status").textContent = "Start";
     var boundaries = $$("div#maze div.boundary");
@@ -40,10 +28,8 @@ function Click() {
     }
 }
 
-
-function End() {
+function overEnd() {
     if (loser === false) {
         $("status").textContent = "You win!";
     }
-    event.stop();
 }
