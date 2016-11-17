@@ -1,4 +1,3 @@
-// JavaScript File
 var loser = false;  // whether the user has hit a wall
 
 window.onload = function() {
