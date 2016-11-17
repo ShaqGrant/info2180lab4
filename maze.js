@@ -7,7 +7,15 @@ window.onload = function() {
     for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].onmouseover = overBoundary;
     }
+document.body.observe("mousemove", onBody);   
 };
+
+
+function onBody(event) {
+    if (loser === false && event.element() == document.body) {
+        overBoundary(event);
+    }
+}
 
 function overBoundary(event) {
     if (loser === false) {
