@@ -9,11 +9,15 @@ window.onload = function() {
     }
 };
 
-function overBoundary() {
-    loser = true;
-    var boundaries = $$("div#maze div.boundary");
-    for (var i = 0; i < boundaries.length; i++) {
-        boundaries[i].addClassName("youlose");
+function overBoundary(event) {
+    if (loser === false) {
+        loser = true;
+        $("status").textContent = "You Lose!";
+        var boundaries = $$("div#maze div.boundary");
+        for (var i = 0; i < boundaries.length; i++) {
+            boundaries[i].addClassName("youlose");
+        }
+        event.stop();  
     }
 }
 
@@ -25,10 +29,10 @@ function startClick() {
     }
 }
 
-function overEnd() {
-    if(loser) {
-        alert("Sorry, you lost. :[");
-    } else {
-        alert("You win! :]");
+function End() {
+    if (loser === false) {
+        $("status").textContent = "You win!";
     }
+    event.stop();
+
 }
