@@ -1,13 +1,13 @@
-var loser = false;  // whether the user has hit a wall
+var loser = null;  
 
 window.onload = function() {
-    $("start").onclick = startClick;
-    $("end").onmouseover = overEnd;
+    $("start").onclick = Click;
+    $("end").onmouseover = End;
     var boundaries = $$("div#maze div.boundary");
     for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].onmouseover = overBoundary;
     }
-document.body.observe("mousemove", onBody);   
+    document.body.observe("mousemove", onBody);   
 };
 
 
@@ -16,6 +16,7 @@ function onBody(event) {
         overBoundary(event);
     }
 }
+
 
 function overBoundary(event) {
     if (loser === false) {
@@ -29,18 +30,20 @@ function overBoundary(event) {
     }
 }
 
-function startClick() {
+
+function Click() {
     loser = false;
+    $("status").textContent = "Start";
     var boundaries = $$("div#maze div.boundary");
     for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].removeClassName("youlose");
     }
 }
 
+
 function End() {
     if (loser === false) {
         $("status").textContent = "You win!";
     }
     event.stop();
-
 }
