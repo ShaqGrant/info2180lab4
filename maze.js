@@ -12,7 +12,6 @@ window.onload = function() {
 
 function overBoundary() {
     loser = true;
-    $("status").textContent = "You Lose!";
     var boundaries = $$("div#maze div.boundary");
     for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].addClassName("youlose");
@@ -21,7 +20,6 @@ function overBoundary() {
 
 function startClick() {
     loser = false;
-    $("status").textContent = "Start";
     var boundaries = $$("div#maze div.boundary");
     for (var i = 0; i < boundaries.length; i++) {
         boundaries[i].removeClassName("youlose");
@@ -29,7 +27,9 @@ function startClick() {
 }
 
 function overEnd() {
-    if (loser === false) {
-        $("status").textContent = "You win!";
+    if(loser) {
+        alert("Sorry, you lost. :[");
+    } else {
+        alert("You win! :]");
     }
 }
