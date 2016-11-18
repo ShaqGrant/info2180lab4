@@ -1,3 +1,8 @@
 Info2180 Lab 4
 ===============
-Access here: https://shaqgrant.github.io/info2180lab4/
+
+A maze game created with Javascript
+
+**[Play it here!](https://shaqgrant.github.io/info2180lab4/)**
+
+![Screenshot](http://i.imgur.com/w41NY20.png)
